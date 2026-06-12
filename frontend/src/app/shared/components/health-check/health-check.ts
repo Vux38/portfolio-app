@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-
+import { environment } from '../../../../environments/environment';
 @Component({
   selector: 'app-health-check',
   standalone: true,
@@ -22,7 +22,7 @@ export class HealthCheckComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.http.get('http://localhost:8080/api/health')
+    this.http.get(`${environment.apiUrl}/api/health`)
       .subscribe({
         next: (res) => {
           this.status = res;
